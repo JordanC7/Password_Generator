@@ -48,8 +48,15 @@ function generatePassword(lower, upper, number, symbol, length) {
     const typesCount = lower + upper + number + symbol;
     const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(item => Object.values(item)[0]);
 
-    // Doesn't have a selected tyoe
+    // Doesn't have a selected type
     if (typesCount === 0) {
+        alert("At least one type of character must be selected");
+        return '';
+    }
+
+    // Min and Max Characters needed
+    if (length < 8 || length > 128) {
+        alert("Please select a length between 8 and 128 characters");
         return '';
     }
 
@@ -63,6 +70,7 @@ function generatePassword(lower, upper, number, symbol, length) {
     const finalPassword = generatedPassword.slice(0, length);
 
     return finalPassword;
+
 }
 
 
